@@ -8,6 +8,12 @@
   version = "v1.4.2"
 
 [[projects]]
+  name = "github.com/go-gorp/gorp"
+  packages = ["."]
+  revision = "4deece61034873cb5b5416e81abe4cea7bd0da72"
+  version = "v2.0.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [".","hcl/ast","hcl/parser","hcl/scanner","hcl/strconv","hcl/token","json/parser","json/scanner","json/token"]
@@ -24,6 +30,12 @@
   packages = ["."]
   revision = "be5ece7dd465ab0765a9682137865547526d1dfb"
   version = "v1.7.3"
+
+[[projects]]
+  name = "github.com/mattn/go-sqlite3"
+  packages = ["."]
+  revision = "ca5e3819723d8eeaf170ad510e7da1d6d2e94a08"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
@@ -87,6 +99,12 @@
 
 [[projects]]
   branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  revision = "66aacef3dd8a676686c7ae3716979581e8b03c47"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
   revision = "7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce"
@@ -106,6 +124,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "530f154a357648fad5fd87d5bab9cfef1d59b25a717e2ed06e40324c2f6bf77b"
+  inputs-digest = "e39a8862105a11270e83a2ac6f9ad80c9a79cdbde89208b659e5d7eb19151172"
   solver-name = "gps-cdcl"
   solver-version = 1
