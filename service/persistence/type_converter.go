@@ -21,10 +21,12 @@ func (t typeConverter) ToDb(val interface{}) (converted interface{}, err error) 
 func (t typeConverter) FromDb(target interface{}) (scanner gorp.CustomScanner, useScanner bool) {
 	switch target.(type) {
 	case *time.Time:
+		holder := uint64(0)
+
 		scanner.Target = target
-		scanner.Holder = uint64(0)
+		scanner.Holder = &holder
 		scanner.Binder = func(holder, target interface{}) (err error) {
-			*target.(*time.Time) = time.Unix(int64(holder.(uint64)), 0)
+			*target.(*time.Time) = time.Unix(int64(*holder.(*uint64)), 0)
 			return
 		}
 

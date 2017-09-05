@@ -47,7 +47,7 @@ func FromSqlite(dbPath string) (pp Provider, err error) {
 
 func (p *provider) init() (err error) {
 	p.dbMap.AddTableWithName(model.Meta{}, "meta")
-	p.dbMap.AddTableWithName(model.User{}, "user")
+	p.dbMap.AddTableWithName(model.Transaction{}, "transaction")
 
 	if err = p.dbMap.CreateTablesIfNotExists(); err != nil {
 		return

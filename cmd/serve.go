@@ -21,21 +21,29 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/dirtyhairy/moneypenny/cmd/serve"
 	"github.com/spf13/cobra"
 )
 
 func init() {
+	options := serve.Options{}
+
 	// serveCmd represents the serve command
 	serveCmd := &cobra.Command{
-		Use:   "serve",
+		Use:   "serve <database>",
 		Short: "Start the server.",
 		Long:  `Start the moneypenny server.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("serve called")
+			failIf(serve.Run(cmd, args, options))
 		},
 	}
 
 	RootCmd.AddCommand(serveCmd)
+
+	serveCmd.Args = cobra.ExactArgs(1)
+
+	flags := serveCmd.PersistentFlags()
+	flags.StringVarP(&options.Listen, "listen", "l", "localhost:8888", "listen address")
+	flags.BoolVarP(&options.Debug, "debug", "d", false, "debug mode")
+	flags.StringVar(&options.Logfile, "logfile", "", "log into file")
 }
