@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dirtyhairy/moneypenny/model"
+	"github.com/dirtyhairy/moneypenny/server/model"
 )
 
 func assertTransactionCount(t *testing.T, p Provider, expected uint64) {

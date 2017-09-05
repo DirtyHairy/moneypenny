@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/dirtyhairy/moneypenny/model"
+	"github.com/dirtyhairy/moneypenny/server/model"
 	"github.com/go-gorp/gorp"
 	_ "github.com/mattn/go-sqlite3"
 )

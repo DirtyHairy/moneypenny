@@ -1,6 +1,6 @@
 package persistence
 
-import "github.com/dirtyhairy/moneypenny/model"
+import "github.com/dirtyhairy/moneypenny/server/model"
 
 func (p *provider) GetTransactionById(id uint64) (user *model.Transaction, err error) {
 	var result interface{}

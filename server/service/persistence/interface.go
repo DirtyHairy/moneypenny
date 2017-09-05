@@ -1,7 +1,7 @@
 package persistence
 
 import (
-	"github.com/dirtyhairy/moneypenny/model"
+	"github.com/dirtyhairy/moneypenny/server/model"
 )
 
 type Provider interface {

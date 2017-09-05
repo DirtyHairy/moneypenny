@@ -20,7 +20,7 @@
 
 package main
 
-import "github.com/dirtyhairy/moneypenny/cmd"
+import "github.com/dirtyhairy/moneypenny/server/cmd"
 
 func main() {
 	cmd.Execute()

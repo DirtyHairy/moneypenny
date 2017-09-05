@@ -3,7 +3,7 @@ package server
 import (
 	"io"
 
-	"github.com/dirtyhairy/moneypenny/service/persistence"
+	"github.com/dirtyhairy/moneypenny/server/service/persistence"
 )
 
 type Config struct {

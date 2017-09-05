@@ -21,27 +21,29 @@
 package cmd
 
 import (
-	"github.com/dirtyhairy/moneypenny/cmd/initdb"
-
+	"github.com/dirtyhairy/moneypenny/server/cmd/serve"
 	"github.com/spf13/cobra"
 )
 
 func init() {
-	options := initdb.Options{}
+	options := serve.Options{}
 
-	var dbInitCmd = &cobra.Command{
-		Use:   "init <database>",
-		Short: "Initialize the database",
-		Long:  `Initialize the database.`,
+	// serveCmd represents the serve command
+	serveCmd := &cobra.Command{
+		Use:   "serve <database>",
+		Short: "Start the server.",
+		Long:  `Start the moneypenny server.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			failIf(initdb.Run(cmd, args, options))
+			failIf(serve.Run(cmd, args, options))
 		},
 	}
 
-	dbCmd.AddCommand(dbInitCmd)
+	RootCmd.AddCommand(serveCmd)
 
-	dbInitCmd.Args = cobra.ExactArgs(1)
+	serveCmd.Args = cobra.ExactArgs(1)
 
-	flags := dbInitCmd.PersistentFlags()
-	flags.BoolVarP(&options.Force, "force", "f", false, "overwrite existing DB")
+	flags := serveCmd.PersistentFlags()
+	flags.StringVarP(&options.Listen, "listen", "l", "localhost:8888", "listen address")
+	flags.BoolVarP(&options.Debug, "debug", "d", false, "debug mode")
+	flags.StringVar(&options.Logfile, "logfile", "", "log into file")
 }

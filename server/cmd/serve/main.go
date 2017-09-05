@@ -3,8 +3,8 @@ package serve
 import (
 	"os"
 
-	"github.com/dirtyhairy/moneypenny/server"
-	"github.com/dirtyhairy/moneypenny/service/persistence"
+	"github.com/dirtyhairy/moneypenny/server/server"
+	"github.com/dirtyhairy/moneypenny/server/service/persistence"
 	"github.com/spf13/cobra"
 )
 
