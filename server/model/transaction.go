@@ -5,9 +5,9 @@ import (
 )
 
 type Transaction struct {
-	Id              uint64    `db:"id,primarykey,autoincrement"`
-	TransactionDate time.Time `db:"transaction_date,notnull"`
-	Amount          uint64    `db:"amount,notnull"`
-	Title           string    `db:"title,notnull"`
-	Description     string    `db:"description,notnull"`
+	Id              uint64    `db:"id,primarykey,autoincrement" json:"id"`
+	TransactionDate time.Time `db:"transaction_date,notnull" json:"transactionDate"`
+	Amount          uint64    `db:"amount,notnull" json:"amount"`
+	Title           string    `db:"title,notnull" json:"title"`
+	Description     string    `db:"description,notnull" json:"description"`
 }

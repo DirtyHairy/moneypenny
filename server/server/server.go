@@ -31,6 +31,8 @@ func Create(config Config) (_s Server, err error) {
 		s.echo.Logger.SetLevel(log.DEBUG)
 	}
 
+	s.echo.Use(s.addContextMiddleware())
+
 	s.echo.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Output: config.LogWriter,
 	}))
@@ -38,6 +40,8 @@ func Create(config Config) (_s Server, err error) {
 	s.echo.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
 		DisablePrintStack: !config.Debug,
 	}))
+
+	s.setupRouting()
 
 	_s = &s
 	return

@@ -9,6 +9,7 @@ type Provider interface {
 
 	GetMeta() (*model.Meta, error)
 
+	GetAllTransactions() ([]model.Transaction, error)
 	AddTransaction(*model.Transaction) error
 	GetTransactionById(id uint64) (*model.Transaction, error)
 	DeleteTransaction(*model.Transaction) error

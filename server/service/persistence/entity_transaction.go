@@ -31,3 +31,9 @@ func (p *provider) CountTransactions() (count uint64, err error) {
 
 	return
 }
+
+func (p *provider) GetAllTransactions() (transactions []model.Transaction, err error) {
+	_, err = p.dbMap.Select(&transactions, "SELECT * FROM `transaction` ORDER BY transaction_date  ASC")
+
+	return
+}
