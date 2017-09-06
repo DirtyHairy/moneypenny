@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/dirtyhairy/moneypenny/server/server"
@@ -9,9 +10,10 @@ import (
 )
 
 type Options struct {
-	Listen  string
-	Debug   bool
-	Logfile string
+	Listen     string
+	Debug      bool
+	Logfile    string
+	StaticPath string
 }
 
 func Run(cmd *cobra.Command, args []string, options Options) (err error) {
@@ -38,6 +40,17 @@ func Run(cmd *cobra.Command, args []string, options Options) (err error) {
 		Debug:       options.Debug,
 		Persistence: p,
 		LogWriter:   logWriter,
+	}
+
+	if options.StaticPath != "" {
+		var staticFS http.FileSystem
+		staticFS, err = createFS(options.StaticPath)
+
+		if err != nil {
+			return
+		}
+
+		config.StaticFS = staticFS
 	}
 
 	var s server.Server

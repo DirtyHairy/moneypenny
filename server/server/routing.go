@@ -8,14 +8,21 @@ import (
 )
 
 func (s *server) setupRouting() {
-	s.echo.GET("/transactions", controller.GetAllTransactions)
-	s.echo.POST("/transactions", controller.AddTransaction)
-	s.echo.GET("/transactions/:id", controller.GetTransactionById)
-	s.echo.DELETE("/transactions/:id", controller.DeleteTransactionById)
-	s.echo.PUT("/transactions/:id", controller.UpdateTransactionById)
-
-	s.echo.Any("*", func(c echo.Context) error {
+	notFound := func(c echo.Context) error {
 		c.NoContent(http.StatusNotFound)
 		return nil
-	})
+	}
+
+	s.echo.GET("/api/transactions", controller.GetAllTransactions)
+	s.echo.POST("/api/transactions", controller.AddTransaction)
+	s.echo.GET("/api/transactions/:id", controller.GetTransactionById)
+	s.echo.DELETE("/api/transactions/:id", controller.DeleteTransactionById)
+	s.echo.PUT("/api/transactions/:id", controller.UpdateTransactionById)
+
+	if s.config.StaticFS != nil {
+		s.echo.Any("/api/*", notFound)
+		s.echo.GET("*", echo.WrapHandler(http.FileServer(s.config.StaticFS)))
+	} else {
+		s.echo.Any("*", notFound)
+	}
 }
