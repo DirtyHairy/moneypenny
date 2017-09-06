@@ -5,7 +5,7 @@ import (
 )
 
 type Transaction struct {
-	Id              uint64    `db:"id,primarykey,autoincrement" json:"id"`
+	Id              int       `db:"id,primarykey,autoincrement" json:"id"`
 	TransactionDate time.Time `db:"transaction_date,notnull" json:"transactionDate"`
 	Amount          uint64    `db:"amount,notnull" json:"amount"`
 	Title           string    `db:"title,notnull" json:"title"`

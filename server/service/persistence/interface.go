@@ -11,7 +11,8 @@ type Provider interface {
 
 	GetAllTransactions() ([]model.Transaction, error)
 	AddTransaction(*model.Transaction) error
-	GetTransactionById(id uint64) (*model.Transaction, error)
+	UpdateTransaction(*model.Transaction) error
+	GetTransactionById(id int) (*model.Transaction, error)
 	DeleteTransaction(*model.Transaction) error
 	CountTransactions() (uint64, error)
 }

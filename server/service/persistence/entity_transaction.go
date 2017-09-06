@@ -1,8 +1,12 @@
 package persistence
 
-import "github.com/dirtyhairy/moneypenny/server/model"
+import (
+	"errors"
 
-func (p *provider) GetTransactionById(id uint64) (user *model.Transaction, err error) {
+	"github.com/dirtyhairy/moneypenny/server/model"
+)
+
+func (p *provider) GetTransactionById(id int) (user *model.Transaction, err error) {
 	var result interface{}
 	result, err = p.dbMap.Get(model.Transaction{}, id)
 
@@ -18,7 +22,23 @@ func (p *provider) AddTransaction(transaction *model.Transaction) error {
 }
 
 func (p *provider) DeleteTransaction(transaction *model.Transaction) (err error) {
-	_, err = p.dbMap.Delete(transaction)
+	var n int64
+	n, err = p.dbMap.Delete(transaction)
+
+	if err == nil && n == 0 {
+		err = errors.New("entity not found")
+	}
+
+	return
+}
+
+func (p *provider) UpdateTransaction(transaction *model.Transaction) (err error) {
+	var n int64
+	n, err = p.dbMap.Update(transaction)
+
+	if err == nil && n == 0 {
+		err = errors.New("entity not found")
+	}
 
 	return
 }
