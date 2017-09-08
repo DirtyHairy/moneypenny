@@ -19,6 +19,13 @@ type Options struct {
 func Run(cmd *cobra.Command, args []string, options Options) (err error) {
 	databaseFile := args[0]
 
+	var dbFileHandle *os.File
+	if dbFileHandle, err = os.Open(databaseFile); err != nil {
+		return
+	}
+
+	_ = dbFileHandle.Close()
+
 	var p persistence.Provider
 	if p, err = persistence.FromSqlite(databaseFile); err != nil {
 		return
