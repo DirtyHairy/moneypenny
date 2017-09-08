@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {render} from 'react-dom';
 
-const Main = () =>
-    <div>
-        Hello world from react!
-    </div>;
+import App from './component/App';
+
+const Main = () => <App/>;
 
 render(<Main/>, document.getElementById('react-attachpoint'));

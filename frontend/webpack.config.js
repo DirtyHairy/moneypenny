@@ -44,7 +44,8 @@ module.exports = function(env) {
 
         plugins: [
             new NotifierPlugin({
-                title: 'Moneypenny'
+                title: 'Moneypenny',
+                alwaysNotify: true
             })
         ]
     }

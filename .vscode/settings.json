@@ -2,5 +2,9 @@
     "go.autocompleteUnimportedPackages": true,
     "go.lintOnSave": "off",
     "editor.trimAutoWhitespace": true,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "tslint.enable": true,
+    "jshint.enable": false,
+    "typescript.tsdk": "frontend/node_modules/typescript/lib"
 }

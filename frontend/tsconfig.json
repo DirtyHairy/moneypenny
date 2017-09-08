@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "jsx": "react",
     "sourceMap": true,
@@ -9,7 +9,12 @@
     "noUnusedParameters": false,
     "strictNullChecks": false,
     "moduleResolution": "node",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+
+    "plugins": [
+      { "name": "tslint-language-service"}
+    ]
+
   },
   "include": [
     "src/**/*.tsx",
