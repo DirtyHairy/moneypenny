@@ -1,0 +1,17 @@
+{
+  "name": "moneypenny-frontend",
+  "version": "0.0.1",
+  "description": "Moneypenny is a personal ledger",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Christian Speckner",
+    "email": "cnspeckn@googlemail.com",
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/DirtyHairy/moneypenny",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DirtyHairy/moneypenny.git"
+  }
+}
