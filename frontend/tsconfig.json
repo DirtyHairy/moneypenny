@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "module": "es6",
     "lib": [
       "es6",
       "dom"
     ],
-    "module": "commonjs",
     "jsx": "react",
     "sourceMap": true,
     "importHelpers": true,
@@ -14,7 +14,7 @@
     "noUnusedLocals": true,
     "strictNullChecks": false,
     "moduleResolution": "node",
-    "downlevelIteration": true,
+    "outDir": "compiled",
 
     "plugins": [
       { "name": "tslint-language-service"}

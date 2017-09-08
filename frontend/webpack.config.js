@@ -2,10 +2,11 @@ const path = require('path');
 const NotifierPlugin = require('webpack-notifier');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = function(env) {
     const builddir = path.join(__dirname, '/web/build'),
-        isProduction = env.indexOf('prod') === 0;
+        isProduction = env && env.indexOf('prod') === 0;
 
     return {
 
@@ -61,7 +62,7 @@ module.exports = function(env) {
                     verbose: true
                 }
             ),
-            ...(isProduction ? [new webpack.optimize.UglifyJsPlugin()] : [])
+            ...(isProduction ? [new MinifyPlugin()] : [])
         ]
     }
 }
