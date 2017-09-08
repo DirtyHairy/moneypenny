@@ -28,7 +28,11 @@
     "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
+    "@types/node": "^8.0.28",
+    "@types/react-redux": "^5.0.7",
+    "clean-webpack-plugin": "^0.1.16",
     "material-ui": "^1.0.0-beta.8",
+    "react-redux": "^5.0.6",
     "tslint-language-service": "^0.9.6"
   }
 }

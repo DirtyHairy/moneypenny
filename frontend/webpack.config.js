@@ -1,14 +1,19 @@
 const path = require('path');
 const NotifierPlugin = require('webpack-notifier');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = function(env) {
+    const builddir = path.join(__dirname, '/web/build'),
+        isProduction = env.indexOf('prod') === 0;
+
     return {
 
         entry: './src/main.tsx',
 
         output: {
             filename: 'build.js',
-            path: path.join(__dirname, '/web/build'),
+            path: builddir,
             library: 'moneypenny'
         },
 
@@ -40,13 +45,23 @@ module.exports = function(env) {
             extensions: ['.tsx', '.ts', '.js']
         },
 
-        devtool: env === 'prod' ? 'source-map' : 'inline-source-map',
+        devtool: isProduction ? false : 'eval-source-map',
 
         plugins: [
             new NotifierPlugin({
                 title: 'Moneypenny',
                 alwaysNotify: true
-            })
+            }),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
+            }),
+            new CleanWebpackPlugin(
+                [builddir],
+                {
+                    verbose: true
+                }
+            ),
+            ...(isProduction ? [new webpack.optimize.UglifyJsPlugin()] : [])
         ]
     }
 }

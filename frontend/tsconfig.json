@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "module": "commonjs",
     "jsx": "react",
     "sourceMap": true,
     "importHelpers": true,
     "strict": true,
     "noUnusedParameters": false,
+    "noUnusedLocals": true,
     "strictNullChecks": false,
     "moduleResolution": "node",
     "downlevelIteration": true,
