@@ -46,5 +46,5 @@ func init() {
 	flags.StringVarP(&options.Listen, "listen", "l", "localhost:8888", "listen address")
 	flags.BoolVarP(&options.Debug, "debug", "d", false, "debug mode")
 	flags.StringVar(&options.Logfile, "logfile", "", "log into file")
-	flags.StringVar(&options.StaticPath, "static", "", "service static files from this directory")
+	flags.StringVar(&options.StaticPath, "static", "", "serve static files from this directory")
 }

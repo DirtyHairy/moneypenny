@@ -1,4 +1,6 @@
 {
     "go.autocompleteUnimportedPackages": true,
-    "go.lintOnSave": "off"
+    "go.lintOnSave": "off",
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": true
 }

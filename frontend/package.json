@@ -13,5 +13,18 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/DirtyHairy/moneypenny.git"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "ts-loader": "^2.3.6",
+    "tslib": "^1.7.1",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.6",
+    "webpack-notifier": "^1.5.0"
   }
 }
