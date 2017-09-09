@@ -1,5 +1,5 @@
 import {Action} from 'redux';
-import State from '../state/state';
+import State from '../state/State';
 
 import {MoneypennyAction} from '../action';
 import ledgerReducer from './ledger';

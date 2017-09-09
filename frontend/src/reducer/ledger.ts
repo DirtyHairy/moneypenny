@@ -1,6 +1,6 @@
 import {MoneypennyAction} from '../action';
 import {Actions} from '../action/ledger';
-import State from '../state/ledger';
+import State from '../state/Ledger';
 
 function reducer(state = new State(), action: MoneypennyAction): State {
 

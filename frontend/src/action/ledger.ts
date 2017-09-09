@@ -56,7 +56,7 @@ export interface ReplaceAllTransactionsActions extends Action {
     transactions: Array<Transaction>;
 }
 
-export function replaceAllTranslations(transactions: Array<Transaction>): ReplaceAllTransactionsActions {
+export function replaceAllTransactions(transactions: Array<Transaction>): ReplaceAllTransactionsActions {
     return {
         type: Actions.replaceAllTransactions,
         transactions

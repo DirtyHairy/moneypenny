@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import {AppBar, Toolbar, Typography} from 'material-ui';
 
-import State from './state/state';
+import State from './state/State';
 
 export interface Props {
     store: Store<State>;

@@ -1,5 +1,5 @@
-import Ledger from './ledger';
-import Ui from './ui';
+import Ledger from './Ledger';
+import Ui from './Ui';
 
 interface State {
 
