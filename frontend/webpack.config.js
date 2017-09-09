@@ -6,11 +6,15 @@ const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = function(env) {
     const builddir = path.join(__dirname, '/web/build'),
-        isProduction = env && env.indexOf('prod') === 0;
+        isProduction = typeof(env) === 'object' && env.prod,
+        buildForEs5 = typeof(env) === 'object' && env.es5;
 
     return {
 
-        entry: './src/main.tsx',
+        entry: [
+            './src/main.tsx',
+            ...(buildForEs5 ? [require.resolve('core-js/es6')] : [])
+        ],
 
         output: {
             filename: 'build.js',
@@ -23,7 +27,16 @@ module.exports = function(env) {
                 {
                     loader: 'ts-loader',
                     test: /\.(js|ts|tsx)$/,
-                    exclude: /node_modules/
+                    exclude: /node_modules/,
+                    options: {
+                        compilerOptions: buildForEs5 ?
+                            {
+                                target: 'es5',
+                                lib: ['es6', 'dom'],
+                                downlevelIteration: true
+                            } :
+                            {}
+                    }
                 },
                 {
                     loader: 'tslint-loader',

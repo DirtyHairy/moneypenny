@@ -1,10 +1,10 @@
 import {Transaction, RequestResult} from '../../model';
 
-export type LoadAllResult = Promise<RequestResult<Array<Transaction>>>;
+export type LoadAllResult = RequestResult<Array<Transaction>>;
 
 interface TransactionProvider {
 
-    loadAll(): LoadAllResult;
+    loadAll(): Promise<LoadAllResult>;
 
 }
 

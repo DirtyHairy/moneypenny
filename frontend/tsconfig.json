@@ -2,10 +2,6 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es6",
-    "lib": [
-      "es6",
-      "dom"
-    ],
     "jsx": "react",
     "sourceMap": true,
     "importHelpers": true,

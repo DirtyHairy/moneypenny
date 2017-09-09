@@ -13,7 +13,7 @@ class TransactionProvider implements TransactionProviderInterface {
         private _fetch = fetch.bind(window)
     ) {}
 
-    async loadAll(): LoadAllResult {
+    async loadAll(): Promise<LoadAllResult> {
         let response: Response;
 
         try {

@@ -22,6 +22,7 @@
     "@types/react-redux": "^5.0.7",
     "babel-minify-webpack-plugin": "^0.2.0",
     "clean-webpack-plugin": "^0.1.16",
+    "corejs": "^1.0.0",
     "material-ui": "^1.0.0-beta.8",
     "microevent.ts": "^0.1.0",
     "moment": "^2.18.1",
