@@ -41,6 +41,8 @@ func Create(config Config) (_s Server, err error) {
 		DisablePrintStack: !config.Debug,
 	}))
 
+	s.echo.Use(middleware.Gzip())
+
 	s.setupRouting()
 
 	_s = &s
