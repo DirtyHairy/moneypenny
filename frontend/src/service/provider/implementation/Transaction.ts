@@ -1,10 +1,10 @@
-import * as moment from 'moment';
 import {
     default as TransactionProviderInterface,
     LoadAllResult
 } from '../Transaction';
 import {RequestResult, Transaction} from '../../../model';
 import ApiRouter from '../../ApiRouter';
+import {parseRfc3339} from '../../../util';
 
 class TransactionProvider implements TransactionProviderInterface {
 
@@ -37,7 +37,7 @@ class TransactionProvider implements TransactionProviderInterface {
         const transactions = rawTransactions.map(
             (t: any) => ({
                 ...t,
-                transactionDate: new Date(moment(t.transactionDate).unix() * 1000)
+                transactionDate: parseRfc3339(t.transactionDate)
             } as Transaction)
         );
 

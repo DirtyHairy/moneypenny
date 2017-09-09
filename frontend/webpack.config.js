@@ -62,7 +62,12 @@ module.exports = function(env) {
                     verbose: true
                 }
             ),
-            ...(isProduction ? [new MinifyPlugin()] : [])
+            ...(isProduction ? [new MinifyPlugin(
+                {},
+                {
+                    comments: false
+                }
+            )] : [])
         ]
     }
 }
