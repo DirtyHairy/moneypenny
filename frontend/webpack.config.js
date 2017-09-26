@@ -46,11 +46,6 @@ module.exports = function(env) {
                         emitErrors: true,
                         typeCheck: true
                     }
-                },
-                {
-                    loader: 'raw-loader',
-                    test: /\.(fsh|vsh)$/,
-                    exclude: /node_modules/
                 }
             ]
         },
