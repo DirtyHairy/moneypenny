@@ -20,7 +20,7 @@ func Run(cmd *cobra.Command, args []string, options Options) (err error) {
 	databaseFile := args[0]
 
 	var dbFileHandle *os.File
-	if dbFileHandle, err = os.Open(databaseFile); err != nil {
+	if dbFileHandle, err = os.OpenFile(databaseFile, os.O_RDWR, 0666); err != nil {
 		return
 	}
 
