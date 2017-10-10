@@ -6,5 +6,6 @@
     "files.trimTrailingWhitespace": true,
     "tslint.enable": true,
     "jshint.enable": false,
-    "typescript.tsdk": "frontend/node_modules/typescript/lib"
+    "typescript.tsdk": "frontend/node_modules/typescript/lib",
+    "editor.formatOnSave": true
 }

@@ -1,5 +1,5 @@
-import {Store} from 'redux';
-import {Event} from 'microevent.ts';
+import { Store } from 'redux';
+import { Event } from 'microevent.ts';
 
 import State from '../../state/State';
 import ContainerInterface from '../Container';
@@ -9,7 +9,6 @@ import LedgerService from './Ledger';
 import TransactionProvider from '../provider/implementation/Transaction';
 
 class Container implements ContainerInterface {
-
     setStore(store: Store<State>): this {
         if (this._store) {
             throw new Error('store already injected');
@@ -40,19 +39,16 @@ class Container implements ContainerInterface {
         );
     }
 
-    private _getOrCreateSingletonService(
-        key: string,
-        factory: () => any
-    ): any {
+    private _getOrCreateSingletonService(key: string, factory: () => any): any {
         if (!this._services.has(key)) {
             const service = factory();
 
             this._services.set(key, service);
 
             if (service.setStore) {
-                this._store ?
-                    service.setStore(this._store) :
-                    this._onStoreConfigured.addHandler(store => service.setStore(store));
+                this._store
+                    ? service.setStore(this._store)
+                    : this._onStoreConfigured.addHandler(store => service.setStore(store));
             }
         }
 
@@ -64,7 +60,6 @@ class Container implements ContainerInterface {
     private _onStoreConfigured = new Event<Store<State>>();
 
     private _store: Store<State> = null;
-
 }
 
 export default Container;

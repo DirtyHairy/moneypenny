@@ -1,16 +1,13 @@
-import {Store} from 'redux';
+import { Store } from 'redux';
 
-import {RequestStatus} from '../../model/RequestResult';
+import { RequestStatus } from '../../model/RequestResult';
 import State from '../../state/State';
 import TransactionProvider from '../provider/Transaction';
-import {replaceAllTransactions} from '../../action/ledger';
+import { replaceAllTransactions } from '../../action/ledger';
 import LedgerServiceInterface from '../Ledger';
 
 class LedgerService implements LedgerServiceInterface {
-
-    constructor(
-        private _transactionProvider: TransactionProvider
-    ) {}
+    constructor(private _transactionProvider: TransactionProvider) {}
 
     setStore(store: Store<State>): void {
         this._store = store;
@@ -25,7 +22,6 @@ class LedgerService implements LedgerServiceInterface {
     }
 
     private _store: Store<State>;
-
 }
 
 export default LedgerService;

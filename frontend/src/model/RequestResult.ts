@@ -23,10 +23,10 @@ export interface RequestResponseError<DomainErrorT = void> {
 }
 
 type RequestResult<PayloadT = void, DomainErrorT = void> =
-    RequestResponseSuccess<PayloadT> | RequestResponseError<DomainErrorT>;
+    | RequestResponseSuccess<PayloadT>
+    | RequestResponseError<DomainErrorT>;
 
 namespace RequestResult {
-
     export function networkError(): RequestResponseError {
         return {
             status: RequestStatus.error,
@@ -47,7 +47,6 @@ namespace RequestResult {
             payload
         };
     }
-
 }
 
 export default RequestResult;

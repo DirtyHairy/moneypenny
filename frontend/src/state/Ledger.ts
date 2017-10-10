@@ -1,8 +1,7 @@
-import { } from '../model/transaction';
-import {Transaction} from '../model';
+import {} from '../model/transaction';
+import { Transaction } from '../model';
 
 class Ledger {
-
     constructor(changes: Partial<Ledger> = {}, previous?: Ledger) {
         Object.assign(this, previous, changes);
 
@@ -14,7 +13,6 @@ class Ledger {
     }
 
     transactions: ReadonlyArray<Transaction> = Object.freeze([]);
-
 }
 
 export default Ledger;

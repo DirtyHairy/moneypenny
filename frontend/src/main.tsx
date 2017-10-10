@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {render} from 'react-dom';
-import {createStore} from 'redux';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
 
-import {isProduction} from './util';
+import { isProduction } from './util';
 import reducer from './reducer/root';
 import ServiceContainerInterface from './service/Container';
 import ServiceContainer from './service/implementation/Container';
@@ -17,18 +17,12 @@ async function main() {
 
     const store = createStore(
         reducer,
-        (isProduction || !window.devToolsExtension) ? (x: any) => x : window.devToolsExtension()
+        isProduction || !window.devToolsExtension ? (x: any) => x : window.devToolsExtension()
     );
 
     container.setStore(store);
 
-    await new Promise(r =>
-        render(
-            <App store={store}/>,
-            document.getElementById('react-attachpoint'),
-            r
-        )
-    );
+    await new Promise(r => render(<App store={store} />, document.getElementById('react-attachpoint'), r));
 
     await container.getLedgerService().start();
 }

@@ -1,17 +1,10 @@
-import {
-    default as TransactionProviderInterface,
-    LoadAllResult
-} from '../Transaction';
-import {RequestResult, Transaction} from '../../../model';
+import { default as TransactionProviderInterface, LoadAllResult } from '../Transaction';
+import { RequestResult, Transaction } from '../../../model';
 import ApiRouter from '../../ApiRouter';
-import {parseRfc3339} from '../../../util';
+import { parseRfc3339 } from '../../../util';
 
 class TransactionProvider implements TransactionProviderInterface {
-
-    constructor(
-        private _router: ApiRouter,
-        private _fetch = fetch.bind(window)
-    ) {}
+    constructor(private _router: ApiRouter, private _fetch = fetch.bind(window)) {}
 
     async loadAll(): Promise<LoadAllResult> {
         let response: Response;
@@ -35,15 +28,15 @@ class TransactionProvider implements TransactionProviderInterface {
         }
 
         const transactions = rawTransactions.map(
-            (t: any) => ({
-                ...t,
-                transactionDate: parseRfc3339(t.transactionDate)
-            } as Transaction)
+            (t: any) =>
+                ({
+                    ...t,
+                    transactionDate: parseRfc3339(t.transactionDate)
+                } as Transaction)
         );
 
         return RequestResult.success(transactions);
     }
-
 }
 
 export default TransactionProvider;

@@ -1,6 +1,6 @@
-import {Action} from 'redux';
+import { Action } from 'redux';
 
-import {Transaction} from '../model';
+import { Transaction } from '../model';
 
 export enum Actions {
     addTransaction = 'ledger/add-transaction',
@@ -10,10 +10,10 @@ export enum Actions {
 }
 
 export type LedgerAction =
-    AddTransactionAction |
-    RemoveTransactionAction |
-    ReplaceTransactionAction |
-    ReplaceAllTransactionsActions;
+    | AddTransactionAction
+    | RemoveTransactionAction
+    | ReplaceTransactionAction
+    | ReplaceAllTransactionsActions;
 
 export interface AddTransactionAction extends Action {
     type: Actions.addTransaction;

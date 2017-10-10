@@ -1,7 +1,7 @@
-import {Action} from 'redux';
+import { Action } from 'redux';
 import State from '../state/State';
 
-import {MoneypennyAction} from '../action';
+import { MoneypennyAction } from '../action';
 import ledgerReducer from './ledger';
 import uiReducer from './ui';
 
