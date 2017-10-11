@@ -6,15 +6,11 @@ const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = function(env) {
     const builddir = path.join(__dirname, '/web/build'),
-        isProduction = typeof(env) === 'object' && env.prod,
-        buildForEs5 = typeof(env) === 'object' && env.es5;
+        isProduction = typeof env === 'object' && env.prod,
+        buildForEs5 = typeof env === 'object' && env.es5;
 
     return {
-
-        entry: [
-            './src/main.tsx',
-            ...(buildForEs5 ? [require.resolve('core-js/es6')] : [])
-        ],
+        entry: ['./src/main.tsx', ...(buildForEs5 ? [require.resolve('core-js/es6')] : [])],
 
         output: {
             filename: 'build.js',
@@ -29,13 +25,13 @@ module.exports = function(env) {
                     test: /\.(js|ts|tsx)$/,
                     exclude: /node_modules/,
                     options: {
-                        compilerOptions: buildForEs5 ?
-                            {
-                                target: 'es5',
-                                lib: ['es6', 'dom'],
-                                downlevelIteration: true
-                            } :
-                            {}
+                        compilerOptions: buildForEs5
+                            ? {
+                                  target: 'es5',
+                                  lib: ['es6', 'dom'],
+                                  downlevelIteration: true
+                              }
+                            : {}
                     }
                 },
                 {
@@ -51,7 +47,10 @@ module.exports = function(env) {
         },
 
         resolve: {
-            extensions: ['.tsx', '.ts', '.js']
+            extensions: ['.tsx', '.ts', '.js'],
+            alias: {
+                moment$: 'moment/moment.js'
+            }
         },
 
         devtool: isProduction ? false : 'eval-source-map',
@@ -64,18 +63,19 @@ module.exports = function(env) {
             new webpack.DefinePlugin({
                 'process.env.NODE_ENV': isProduction ? "'production'" : "'development'"
             }),
-            new CleanWebpackPlugin(
-                [builddir],
-                {
-                    verbose: true
-                }
-            ),
-            ...(isProduction ? [new MinifyPlugin(
-                {},
-                {
-                    comments: false
-                }
-            )] : [])
+            new CleanWebpackPlugin([builddir], {
+                verbose: true
+            }),
+            ...(isProduction
+                ? [
+                      new MinifyPlugin(
+                          {},
+                          {
+                              comments: false
+                          }
+                      )
+                  ]
+                : [])
         ]
-    }
-}
+    };
+};
